@@ -14,3 +14,12 @@ A simple interactive command-line interface designed to streamline git commit me
 ## 🛠️ Tech Stack
 - **Runtime:** Node.js / Bash
 - **Target:** Git integration CLI tool
+
+---
+
+## 🏃 Quick Start
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/commit-craft.git](https://github.com/your-username/commit-craft.git)
+   cd commit-craft
