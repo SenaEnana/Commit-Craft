@@ -23,3 +23,8 @@ A simple interactive command-line interface designed to streamline git commit me
    ```bash
    git clone [https://github.com/SenaEnana/commit-craft.git](https://github.com/SenaEnana/commit-craft.git)
    cd commit-craft
+   ```
+2. **Run locally:**
+   ```bash
+   npm start
+   ```
