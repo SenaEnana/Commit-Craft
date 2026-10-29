@@ -21,5 +21,5 @@ A simple interactive command-line interface designed to streamline git commit me
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/your-username/commit-craft.git](https://github.com/your-username/commit-craft.git)
+   git clone [https://github.com/SenaEnana/commit-craft.git](https://github.com/SenaEnana/commit-craft.git)
    cd commit-craft
