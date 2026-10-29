@@ -34,3 +34,6 @@ A simple interactive command-line interface designed to streamline git commit me
 ## 📄 License
 
 This project is open-source under the MIT License.
+
+---
+
