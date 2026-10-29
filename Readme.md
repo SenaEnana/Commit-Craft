@@ -28,3 +28,5 @@ A simple interactive command-line interface designed to streamline git commit me
    ```bash
    npm start
    ```
+
+---
