@@ -1,7 +1,6 @@
 import subprocess
 import sys
 
-# Standard Conventional Commit types
 TYPES = {
     "1": ("feat", "A new feature for the user"),
     "2": ("fix", "A bug fix"),
