@@ -37,6 +37,3 @@ This project is open-source under the MIT License.
 
 ---
 
-<ElicitationsGroup>
-What specific domain or tech stack are you in the mood for today (e.g., backend CLI tool, frontend UI, system utility, or standard web app)?
-</ElicitationsGroup>
