@@ -25,7 +25,6 @@ def main():
     scope = input("Enter scope (optional, e.g., auth, ui, cli) [Press Enter to skip]: ").strip()
     scope_str = f"({scope})" if scope else ""
     
-    # 3. Commit message
     message = input("Enter short commit description: ").strip()
     if not message:
         print("❌ Commit message cannot be empty. Aborting.")
