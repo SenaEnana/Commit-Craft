@@ -30,7 +30,6 @@ def main():
         print("❌ Commit message cannot be empty. Aborting.")
         sys.exit(1)
         
-    # Construct conventional commit string
     full_message = f"{commit_type}{scope_str}: {message}"
     
     print(f"\n📦 Generated Commit Message:\n   {full_message}\n")
