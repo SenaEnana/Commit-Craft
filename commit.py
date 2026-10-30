@@ -21,8 +21,7 @@ def main():
         sys.exit(1)
         
     commit_type = TYPES[choice][0]
-    
-    # 2. Optional scope
+
     scope = input("Enter scope (optional, e.g., auth, ui, cli) [Press Enter to skip]: ").strip()
     scope_str = f"({scope})" if scope else ""
     
