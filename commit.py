@@ -34,7 +34,6 @@ def main():
     
     print(f"\n📦 Generated Commit Message:\n   {full_message}\n")
     
-    # 4. Git execution confirmation
     confirm = input("Execute 'git add .' and commit? (y/n): ").strip().lower()
     if confirm == 'y':
         try:
