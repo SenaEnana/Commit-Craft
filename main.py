@@ -1,13 +1,13 @@
 # import json
 # from datetime import datetime
 
-def add_note(content: str, tag: str = "general") -> None:
-    data_file = "notes.json"
-    try:
-        with open(data_file, "r") as f:
-            notes = json.load(f)
-    except (FileNotFoundError, json.JSONDecodeError):
-        notes = []
+# def add_note(content: str, tag: str = "general") -> None:
+#     data_file = "notes.json"
+#     try:
+#         with open(data_file, "r") as f:
+#             notes = json.load(f)
+#     except (FileNotFoundError, json.JSONDecodeError):
+#         notes = []
 
     new_entry = {
         "id": len(notes) + 1,
