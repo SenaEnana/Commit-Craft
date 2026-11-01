@@ -9,12 +9,12 @@
 #     except (FileNotFoundError, json.JSONDecodeError):
 #         notes = []
 
-    # new_entry = {
-    #     "id": len(notes) + 1,
-    #     "content": content,
-    #     "tag": tag,
-    #     "created_at": datetime.utcnow().isoformat()
-    # }
+#     new_entry = {
+#         "id": len(notes) + 1,
+#         "content": content,
+#         "tag": tag,
+#         "created_at": datetime.utcnow().isoformat()
+#     }
     
 #     notes.append(new_entry)
 #     with open(data_file, "w") as f:
