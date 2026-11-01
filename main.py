@@ -1,5 +1,5 @@
 # import json
-from datetime import datetime
+# from datetime import datetime
 
 def add_note(content: str, tag: str = "general") -> None:
     data_file = "notes.json"
