@@ -30,7 +30,6 @@ def get_custom_date_env():
         try:
             if len(date_str) == 10:
                 dt = datetime.strptime(date_str, "%Y-%m-%d")
-                # Default to current time of day if only date is provided
                 now = datetime.now()
                 dt = dt.replace(hour=now.hour, minute=now.minute, second=now.second)
             else:
