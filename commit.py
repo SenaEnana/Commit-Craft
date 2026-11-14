@@ -36,7 +36,6 @@ def main():
     is_breaking = input("Is this a BREAKING CHANGE? (y/n) [default: n]: ").strip().lower() == 'y'
     breaking_mark = "!" if is_breaking else ""
     
-    # 3. Short description & optional body
     message = input("Enter short commit description: ").strip()
     if not message:
         print("❌ Commit message cannot be empty. Aborting.")
