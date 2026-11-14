@@ -28,7 +28,6 @@ def get_custom_date_env():
         date_str = input("Custom date: ").strip()
         
         try:
-            # Support both YYYY-MM-DD and YYYY-MM-DD HH:MM:SS
             if len(date_str) == 10:
                 dt = datetime.strptime(date_str, "%Y-%m-%d")
                 # Default to current time of day if only date is provided
