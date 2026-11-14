@@ -59,7 +59,6 @@ def main():
         
     commit_type = TYPES[choice][0]
     
-    # 2. Optional scope & breaking change flag
     scope = input("Enter scope (optional, e.g., cli, ui, core) [Enter to skip]: ").strip()
     scope_str = f"({scope})" if scope else ""
     
