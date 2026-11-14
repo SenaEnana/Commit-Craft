@@ -42,8 +42,7 @@ def main():
         sys.exit(1)
         
     body = input("Enter detailed body description (optional) [Enter to skip]: ").strip()
-    
-    # Construct header and full commit payload
+
     header = f"{commit_type}{scope_str}{breaking_mark}: {message}"
     full_payload = f"{header}\n\n{body}" if body else header
     
