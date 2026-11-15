@@ -71,8 +71,7 @@ def main():
         sys.exit(1)
         
     body = input("Enter detailed body description (optional) [Enter to skip]: ").strip()
-    
-    # 4. Custom Date (Backdate / Future)
+
     commit_env = get_custom_date_env()
     
     # Construct header and full commit payload
