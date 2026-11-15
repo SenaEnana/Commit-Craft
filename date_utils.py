@@ -7,7 +7,6 @@ def parse_relative_date(date_str: str) -> datetime:
     date_str = date_str.strip().lower()
     now = datetime.now()
     
-    # Handle relative shortcuts (e.g. -1d, -2w, +5h)
     if date_str.startswith('-') or date_str.startswith('+'):
         unit = date_str[-1]
         try:
@@ -24,8 +23,7 @@ def parse_relative_date(date_str: str) -> datetime:
             return now - delta if date_str.startswith('-') else now + delta
         except (ValueError, IndexError):
             raise ValueError("Invalid relative format. Use e.g., -1d, -2w, +5h.")
-    
-    # Handle absolute dates
+
     if len(date_str) == 10:
         dt = datetime.strptime(date_str, "%Y-%m-%d")
         return dt.replace(hour=now.hour, minute=now.minute, second=now.second)
