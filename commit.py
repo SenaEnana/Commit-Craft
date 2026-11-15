@@ -13,7 +13,6 @@ TYPES = {
 def main():
     print("🚀 Commit Craft v4 - Modular Semantic Versioning & Time-Travel Assistant\n")
     
-    # 1. Select commit type
     print("Select commit type:")
     for key, (t, desc) in TYPES.items():
         print(f"  [{key}] {t:8} - {desc}")
