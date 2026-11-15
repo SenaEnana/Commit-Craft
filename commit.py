@@ -23,8 +23,7 @@ def main():
         sys.exit(1)
         
     commit_type = TYPES[choice][0]
-    
-    # 2. Scope & Breaking Change
+
     scope = input("Enter scope (optional, e.g., cli, ui, core) [Enter to skip]: ").strip()
     scope_str = f"({scope})" if scope else ""
     
