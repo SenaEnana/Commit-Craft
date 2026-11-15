@@ -79,7 +79,6 @@ def main():
     
     print(f"\n📦 Generated Commit:\n{'-'*40}\n{full_payload}\n{'-'*40}\n")
     
-    # 5. Stage, Commit & Optional Push
     confirm = input("Execute 'git add .' and commit? (y/n): ").strip().lower()
     if confirm == 'y':
         try:
