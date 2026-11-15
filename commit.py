@@ -74,7 +74,6 @@ def main():
 
     commit_env = get_custom_date_env()
     
-    # Construct header and full commit payload
     header = f"{commit_type}{scope_str}{breaking_mark}: {message}"
     full_payload = f"{header}\n\n{body}" if body else header
     
