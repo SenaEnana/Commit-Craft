@@ -38,8 +38,7 @@ def main():
     body = input("Enter detailed body description (optional) [Enter to skip]: ").strip()
    
     commit_env = get_custom_date_env()
-    
-    # Construct payload
+
     header = f"{commit_type}{scope_str}{breaking_mark}: {message}"
     full_payload = f"{header}\n\n{body}" if body else header
     
