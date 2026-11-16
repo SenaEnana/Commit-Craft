@@ -43,8 +43,7 @@ def main():
     full_payload = f"{header}\n\n{body}" if body else header
     
     print(f"\n📦 Generated Commit:\n{'-'*40}\n{full_payload}\n{'-'*40}\n")
-    
-    # 5. Commit & Push
+ 
     confirm = input("Execute 'git add .' and commit? (y/n): ").strip().lower()
     if confirm == 'y':
         execute_commit(full_payload, commit_env)
