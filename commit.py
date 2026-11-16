@@ -1,5 +1,5 @@
 import sys
-from date_utils import get_custom_date_env
+from backend.date_utils import get_custom_date_env
 from git_utils import execute_commit
 
 TYPES = {
