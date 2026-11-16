@@ -30,8 +30,7 @@ def execute_external_commit(repo_path: str, files: list[str], full_payload: str,
     """Stages selected files and commits them inside the target repository."""
     if not is_valid_git_repo(repo_path):
         raise ValueError("Invalid Git repository path.")
-        
-    # Stage only selected files (or all if ['all'] is passed)
+
     if files == ["all"]:
         subprocess.run(["git", "add", "."], cwd=repo_path, check=True)
     else:
