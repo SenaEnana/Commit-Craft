@@ -1,24 +1,51 @@
+import os
 import subprocess
 
-def get_current_branch():
-    """Detects and returns the active git branch name."""
-    try:
-        res = subprocess.run(["git", "branch", "--show-current"], capture_output=True, text=True, check=True)
-        return res.stdout.strip()
-    except subprocess.CalledProcessError:
-        return "main"
+def is_valid_git_repo(repo_path: str) -> bool:
+    """Checks if the provided directory exists and contains a .git folder."""
+    return os.path.isdir(repo_path) and os.path.isdir(os.path.join(repo_path, ".git"))
 
-def execute_commit(full_payload, commit_env):
-    """Stages files, creates the commit with custom environment variables, and pushes if confirmed."""
-    try:
-        subprocess.run(["git", "add", "."], check=True)
-        subprocess.run(["git", "commit", "-m", full_payload], env=commit_env, check=True)
-        print("✅ Successfully staged and committed changes!")
+def get_repo_status(repo_path: str) -> list[dict]:
+    """Returns a list of modified/untracked files in the target project."""
+    if not is_valid_git_repo(repo_path):
+        raise ValueError("Invalid Git repository path.")
         
-        branch = get_current_branch()
-        push_confirm = input(f"Push directly to 'origin {branch}'? (y/n): ").strip().lower()
-        if push_confirm == 'y':
-            subprocess.run(["git", "push", "origin", branch], check=True)
-            print(f"🚀 Pushed to origin/{branch}!")
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Git command failed: {e}")
+    res = subprocess.run(
+        ["git", "status", "--porcelain"],
+        cwd=repo_path,
+        capture_output=True,
+        text=True,
+        check=True
+    )
+    
+    files = []
+    for line in res.stdout.splitlines():
+        if line.strip():
+            status = line[:2].strip()
+            filepath = line[3:].strip()
+            files.append({"status": status, "file": filepath})
+    return files
+
+def execute_external_commit(repo_path: str, files: list[str], full_payload: str, commit_env: dict, push: bool = False):
+    """Stages selected files and commits them inside the target repository."""
+    if not is_valid_git_repo(repo_path):
+        raise ValueError("Invalid Git repository path.")
+        
+    # Stage only selected files (or all if ['all'] is passed)
+    if files == ["all"]:
+        subprocess.run(["git", "add", "."], cwd=repo_path, check=True)
+    else:
+        subprocess.run(["git", "add"] + files, cwd=repo_path, check=True)
+        
+    subprocess.run(["git", "commit", "-m", full_payload], cwd=repo_path, env=commit_env, check=True)
+    
+    if push:
+        branch_res = subprocess.run(
+            ["git", "branch", "--show-current"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        branch = branch_res.stdout.strip()
+        subprocess.run(["git", "push", "origin", branch], cwd=repo_path, check=True)
