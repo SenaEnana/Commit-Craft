@@ -36,8 +36,7 @@ def main():
         sys.exit(1)
         
     body = input("Enter detailed body description (optional) [Enter to skip]: ").strip()
-    
-    # 4. Custom Date / Relative Time Shortcut
+   
     commit_env = get_custom_date_env()
     
     # Construct payload
