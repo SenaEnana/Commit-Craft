@@ -41,7 +41,6 @@ def create_commit(req: CommitRequest):
         header = f"{req.commit_type}{scope_str}{breaking_mark}: {req.message}"
         full_payload = f"{header}\n\n{req.body}" if req.body else header
 
-        # 2. Handle Custom/Relative Date Environment
         commit_env = os.environ.copy()
         if req.date_offset:
             dt = parse_relative_date(req.date_offset)
