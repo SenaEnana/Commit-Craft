@@ -21,7 +21,7 @@ class CommitRequest(BaseModel):
     is_breaking: bool = False
     message: str
     body: str = ""
-    date_offset: str = ""  # e.g., "-1d" or "2026-11-15"
+    date_offset: str = ""
     files: list[str] = ["all"]
     push: bool = False
 
