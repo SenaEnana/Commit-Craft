@@ -48,7 +48,6 @@ def create_commit(req: CommitRequest):
             commit_env["GIT_AUTHOR_DATE"] = formatted_date
             commit_env["GIT_COMMITTER_DATE"] = formatted_date
 
-        # 3. Execute Git Operations on Target Repo
         execute_external_commit(
             repo_path=req.repo_path,
             files=req.files,
