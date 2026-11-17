@@ -7,7 +7,6 @@ from git_utils import get_repo_status, execute_external_commit
 
 app = FastAPI(title="Commit Craft API")
 
-# Allow local React frontend to communicate with FastAPI
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173", "http://localhost:3000"],
