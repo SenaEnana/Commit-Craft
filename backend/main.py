@@ -36,7 +36,6 @@ def check_status(repo_path: str):
 @app.post("/api/commit")
 def create_commit(req: CommitRequest):
     try:
-        # 1. Build Conventional Commit Message
         scope_str = f"({req.scope})" if req.scope else ""
         breaking_mark = "!" if req.is_breaking else ""
         header = f"{req.commit_type}{scope_str}{breaking_mark}: {req.message}"
