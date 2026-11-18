@@ -8,7 +8,6 @@ TYPES = {
     "4": ("refactor", "Code change that neither fixes a bug nor adds a feature"),
     "5": ("chore", "Maintenance tasks, builds, or package updates")
 }
-
 def get_current_branch():
     try:
         res = subprocess.run(["git", "branch", "--show-current"], capture_output=True, text=True, check=True)
