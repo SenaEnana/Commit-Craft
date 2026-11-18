@@ -1,5 +1,7 @@
+import os
 import subprocess
 import sys
+from datetime import datetime
 
 TYPES = {
     "1": ("feat", "A new feature for the user"),
@@ -15,9 +17,36 @@ def get_current_branch():
     except subprocess.CalledProcessError:
         return "main"
 
-def main():
-    print("🚀 Commit Craft v2 - Semantic Versioning Assistant\n")
+def get_custom_date_env():
+    """Prompts for an optional custom commit date and returns updated environment variables."""
+    env = os.environ.copy()
+    use_custom = input("Set a custom commit date (backdate/future)? (y/n) [default: n]: ").strip().lower()
+    
+    if use_custom == 'y':
+        print("Enter date in 'YYYY-MM-DD HH:MM:SS' or 'YYYY-MM-DD' format (e.g., 2026-11-15 14:30:00):")
+        date_str = input("Custom date: ").strip()
+        
+        try:
+            if len(date_str) == 10:
+                dt = datetime.strptime(date_str, "%Y-%m-%d")
+                now = datetime.now()
+                dt = dt.replace(hour=now.hour, minute=now.minute, second=now.second)
+            else:
+                dt = datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S")
+                
+            formatted_date = dt.strftime("%Y-%m-%dT%H:%M:%S")
+            env["GIT_AUTHOR_DATE"] = formatted_date
+            env["GIT_COMMITTER_DATE"] = formatted_date
+            print(f"🕒 Commit timestamp set to: {formatted_date}")
+        except ValueError:
+            print("❌ Invalid date format. Aborting to prevent bad timestamp.")
+            sys.exit(1)
+            
+    return env
 
+def main():
+    print("🚀 Commit Craft v3 - Semantic Versioning & Time-Travel Assistant\n")
+    
     print("Select commit type:")
     for key, (t, desc) in TYPES.items():
         print(f"  [{key}] {t:8} - {desc}")
@@ -42,16 +71,18 @@ def main():
         
     body = input("Enter detailed body description (optional) [Enter to skip]: ").strip()
 
+    commit_env = get_custom_date_env()
+    
     header = f"{commit_type}{scope_str}{breaking_mark}: {message}"
     full_payload = f"{header}\n\n{body}" if body else header
     
     print(f"\n📦 Generated Commit:\n{'-'*40}\n{full_payload}\n{'-'*40}\n")
-
+    
     confirm = input("Execute 'git add .' and commit? (y/n): ").strip().lower()
     if confirm == 'y':
         try:
             subprocess.run(["git", "add", "."], check=True)
-            subprocess.run(["git", "commit", "-m", full_payload], check=True)
+            subprocess.run(["git", "commit", "-m", full_payload], env=commit_env, check=True)
             print("✅ Successfully staged and committed changes!")
             
             branch = get_current_branch()
