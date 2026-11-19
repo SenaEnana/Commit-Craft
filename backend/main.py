@@ -14,6 +14,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Commit Craft Service"}
+
 class CommitRequest(BaseModel):
     repo_path: str
     commit_type: str
