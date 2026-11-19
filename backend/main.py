@@ -2,8 +2,8 @@ import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from date_utils import parse_relative_date
-from git_utils import get_repo_status, execute_external_commit
+from .date_utils import parse_relative_date
+from .git_utils import get_repo_status, execute_external_commit
 
 app = FastAPI(title="Commit Craft API")
 
