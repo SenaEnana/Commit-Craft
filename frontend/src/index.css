@@ -46,45 +46,4 @@ body {
   box-shadow: 0 20px 50px rgba(30, 27, 75, 0.65);
 }
 
-.commit-badge {
-  display: inline-block;
-  margin-bottom: 0.75rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cyan-400);
-  background: rgba(34, 211, 238, 0.12);
-  border: 1px solid rgba(34, 211, 238, 0.35);
-}
-
-.commit-title {
-  margin: 0;
-  font-size: 1.9rem;
-  background: linear-gradient(90deg, var(--indigo-300), var(--cyan-400));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.commit-subtitle {
-  margin: 0.4rem 0 1.5rem;
-  color: var(--slate-400);
-  font-size: 0.95rem;
-}
-
-.commit-row {
-  display: flex;
-  gap: 0.65rem;
-  flex-wrap: wrap;
-}
-
-.commit-form {
-  display: grid;
-  gap: 0.9rem;
-}
-
-
 
