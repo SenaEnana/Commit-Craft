@@ -198,12 +198,3 @@ body {
   gap: 0.4rem;
   cursor: pointer;
 }
-
-.banner-success {
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
-  background: rgba(8, 145, 178, 0.2);
-  border: 1px solid var(--cyan-400);
-  color: var(--cyan-300);
-}
