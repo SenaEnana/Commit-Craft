@@ -19,31 +19,4 @@
   --rose-200: #fecdd3;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
-  color: var(--sky-100);
-  background: linear-gradient(135deg, var(--bg-dark) 0%, var(--indigo-950) 55%, var(--cyan-800) 100%);
-}
-
-.commit-page {
-  min-height: 100vh;
-  padding: 2.5rem 1rem;
-}
-
-.commit-card {
-  max-width: 720px;
-  margin: 0 auto;
-  padding: 2rem;
-  border-radius: 16px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(34, 211, 238, 0.28);
-  box-shadow: 0 20px 50px rgba(30, 27, 75, 0.65);
-}
-
 
