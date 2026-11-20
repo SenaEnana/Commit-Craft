@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 const API_BASE = "http://127.0.0.1:8000";
-
 export default function App() {
   const [repoPath, setRepoPath] = useState("");
   const [commitType, setCommitType] = useState("feat");
