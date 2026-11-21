@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./index.css";
 
 const API_BASE = "https://miniature-space-adventure-7qx7jgwq764hxvvr-8000.app.github.dev";
+// the above will be updated with real url when deployed
 
 export default function App() {
   const [repoPath, setRepoPath] = useState("");
