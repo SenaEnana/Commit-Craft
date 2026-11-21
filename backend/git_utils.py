@@ -7,17 +7,22 @@ def is_valid_git_repo(repo_path: str) -> bool:
 
 def get_repo_status(repo_path: str) -> list[dict]:
     """Returns a list of modified/untracked files in the target project."""
-    if not is_valid_git_repo(repo_path):
-        raise ValueError("Invalid Git repository path.")
-        
+    repo_path = repo_path.strip()
+    if repo_path.startswith("http://") or repo_path.startswith("https://"):
+        raise ValueError("Enter a local folder path (e.g. /workspaces/Commit-Craft), not a GitHub URL.")
+    if not os.path.isdir(repo_path):
+        raise ValueError(f"Directory does not exist on the backend server: {repo_path}")
+    if not os.path.isdir(os.path.join(repo_path, ".git")):
+        raise ValueError(f"No .git folder found inside: {repo_path}")
+
     res = subprocess.run(
         ["git", "status", "--porcelain"],
         cwd=repo_path,
         capture_output=True,
         text=True,
-        check=True
+        check=True,
     )
-    
+
     files = []
     for line in res.stdout.splitlines():
         if line.strip():
