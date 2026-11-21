@@ -22,4 +22,3 @@
 #     print(f"Added note #{new_entry['id']} under [{tag}]")
 
 # if __name__ == "__main__":
-#     add_note("Initial commit: Quick note system initialized!", "meta")

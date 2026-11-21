@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://miniature-space-adventure-7qx7jgwq764hxvvr-8000.app.github.dev";
 
 export default function App() {
   const [repoPath, setRepoPath] = useState("");
