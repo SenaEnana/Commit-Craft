@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./index.css";
 
-const API_BASE = "https://miniature-space-adventure-7qx7jgwq764hxvvr-8000.app.github.dev";
+// Automatically uses local FastAPI on Windows/Mac/Linux, or your Codespace backend when in Codespaces
+const API_BASE = window.location.hostname.endsWith(".app.github.dev")
+  ? window.location.origin.replace("-5173.", "-8000.")
+  : "http://127.0.0.1:8000";
 // the above will be updated with real url when deployed
 
 export default function App() {
