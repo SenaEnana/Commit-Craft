@@ -1,9 +1,13 @@
 import os
+from pathlib import Path
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from .date_utils import parse_relative_date
 from .git_utils import get_repo_status, execute_external_commit
+
 
 app = FastAPI(title="Commit Craft API")
 
@@ -68,3 +72,20 @@ def create_commit(req: CommitRequest):
         return {"status": "success", "commit_message": header}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DIST_DIR = BASE_DIR / "frontend" / "dist"
+ASSETS_DIR = DIST_DIR / "assets"
+
+if ASSETS_DIR.is_dir():
+    app.mount("/assets", StaticFiles(directory=ASSETS_DIR), name="assets")
+
+
+@app.get("/")
+def serve_frontend():
+    index_file = DIST_DIR / "index.html"
+    if not index_file.is_file():
+        return {
+            "message": "Frontend build not found. Run `npm run build` inside frontend/ first."
+        }
+    return FileResponse(index_file)
